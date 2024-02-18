@@ -1,0 +1,53 @@
+"Assigment: Creating a Student Management System"
+
+from abc import ABC, abstractmethod
+
+class StudentManagementSystem (ABC):
+    @abstractmethod
+    def add_student (self, ID):
+        pass
+
+    @abstractmethod
+    def show_student_details (self, ID, name, grades):
+        pass
+
+    @property   
+    @abstractmethod
+    def show_student_avarage_grade (self, ID, name, avarage_grade):
+        pass
+
+
+class Student: 
+    def__init__(self, student_id, name, grades):
+    self._student_id = student_id
+    self.name = name 
+    self.grades = grades 
+
+    def add_grade (self, subject, grade):
+        if subject not in self.grades:
+            self.grades[subject] = []
+
+        self.grades[subject].append(grade)
+
+    @property
+    def avarage_grade (self, avarage_grade):
+        if subject in self.grades and len(self.grades[subject]) > 0:
+            average_grade = sum(self.grades[subject]) / len(self.grades[subject])
+            return average_grade
+        else:
+            return None
+
+    @property
+    def display_details (self):
+        return f"{self._student_id} - {self.name} - {self.avarage_grade}"
+
+class StudentManagementSystem (StudentManagementSystem):
+    def add_student(self, ID):
+        return super().add_student(ID)
+    
+    def show_student_details(self, ID, name, grades):
+        return super().show_student_details(ID, name, grades)
+    
+    @property
+    def show_student_avarage_grade (self, ID, name, avarage_grade):
+        return super().show_student_avarage_grade (ID, name, avarage_grade)
